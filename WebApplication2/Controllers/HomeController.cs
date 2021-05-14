@@ -16,7 +16,7 @@ namespace WebApplication2.Controllers
 
         public IActionResult Index2()
         {
-            var result = new List<Book>()
+            var result = new List<Book>
             {
                 new Book{Id=1, BookName="Momo",Writer="Michael Ende"},
                 new Book{Id=2, BookName="Değirmen",Writer="Sabahattin Ali"},
