@@ -1,0 +1,21 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model IEnumerable<WebApplication2.Models.Book>
+
+<table class="table table-bordered container">
+    <tr>
+        <th>Id</th>
+        <th>Kitap Adı</th>
+        <th>Yazar</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <td>@item.BookName</td>
+            <td>@item.Writer</td>
+        </tr>
+    }
+</table>

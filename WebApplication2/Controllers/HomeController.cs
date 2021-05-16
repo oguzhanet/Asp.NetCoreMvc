@@ -26,6 +26,9 @@ namespace WebApplication2.Controllers
             return View(result);
         }
 
-
+        public IActionResult Tema()
+        {
+            return View();
+        }
     }
 }

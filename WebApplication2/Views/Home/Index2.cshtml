@@ -14,24 +14,30 @@
 
 <body>
     <br />
-    <table class="table table-bordered container">
+<table class="table table-bordered container">
+    <tr>
+        <th>Id</th>
+        <th>Kitap Adı</th>
+        <th>Yazar</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
         <tr>
-            <th>Id</th>
-            <th>Kitap Adı</th>
-            <th>Yazar</th>
+            <th>@item.Id</th>
+            <td>@item.BookName</td>
+            <td>@item.Writer</td>
+
         </tr>
 
-        @foreach (var item in Model)
-        {
+    }
+</table>
 
-            <tr>
-                <th>@item.Id</th>
-                <td>@item.BookName</td>
-                <td>@item.Writer</td>
+@await  Component.InvokeAsync("NewBook")
 
-            </tr>
-
-        }
-    </table>
+<br/>
+@await Html.PartialAsync("_PartialView")
 </body>
 </html>
+

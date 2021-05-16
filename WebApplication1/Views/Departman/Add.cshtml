@@ -1,0 +1,16 @@
+﻿@model WebApplication1.Models.Departman
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_LayoutTes1.cshtml";
+}
+
+<br />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<form class="form-group" method="post">
+    <b>Departman Adı</b>
+    @Html.TextBoxFor(x => x.DepartmanName, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Departman Ekle</button>
+</form>
+
