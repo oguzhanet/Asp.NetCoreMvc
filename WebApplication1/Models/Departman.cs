@@ -11,5 +11,8 @@ namespace WebApplication1.Models
         [Key]
         public int Id { get; set; }
         public string DepartmanName { get; set; }
+
+
+        public List<Personel> Personels { get; set; }
     }
 }

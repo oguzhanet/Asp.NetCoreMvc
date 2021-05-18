@@ -22,9 +22,9 @@
         <tr>
             <th>@item.Id</th>
             <td>@item.DepartmanName</td>
-            <td><a href="#" class="btn btn-danger">Sil</a></td>
-            <td><a href="#" class="btn btn-warning">Güncelle</a></td>
-            <td><a href="#" class="btn btn-default" style="background-color:deepskyblue">Detaylar</a></td>
+            <td><a href="/Departman/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Departman/GetById/@item.Id" class="btn btn-default" style="background-color: darkorange; color: white">Güncelle</a></td>
+            <td><a href="#" class="btn btn-default" style="background-color:deepskyblue; color:white;">Detaylar</a></td>
         </tr>
     }
 </table>

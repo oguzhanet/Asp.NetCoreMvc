@@ -27,7 +27,29 @@ namespace WebApplication1.Controllers
         {
             context.Departmen.Add(departman);
             context.SaveChanges();
-            return RedirectToAction("Index","Departman");
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            var result = context.Departmen.Find(id);
+            context.Departmen.Remove(result);
+            context.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult GetById(int id)
+        {
+            var result = context.Departmen.Find(id);
+            return View("GetById",result);
+        }
+
+        public IActionResult Update(Departman departman)
+        {
+            var result = context.Departmen.Find(departman.Id);
+            result.DepartmanName = departman.DepartmanName;
+            context.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

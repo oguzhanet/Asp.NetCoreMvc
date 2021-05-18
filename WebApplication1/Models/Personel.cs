@@ -13,5 +13,7 @@ namespace WebApplication1.Models
         public string Name { get; set; }
         public string LastName { get; set; }
         public string City { get; set; }
+
+        public Departman Departman { get; set; }
     }
 }
