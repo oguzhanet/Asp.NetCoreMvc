@@ -7,12 +7,12 @@ using WebApplication1.Models;
 
 namespace WebApplication1.Controllers
 {
-    public class DepartmanController : Controller
+    public class DepartmentController : Controller
     {
         Context context = new Context();
         public IActionResult Index()
         {
-            var result = context.Departmen.ToList();
+            var result = context.Departments.ToList();
             return View(result);
         }
 
@@ -23,31 +23,31 @@ namespace WebApplication1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Departman departman)
+        public IActionResult Add(Department department)
         {
-            context.Departmen.Add(departman);
+            context.Departments.Add(department);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var result = context.Departmen.Find(id);
-            context.Departmen.Remove(result);
+            var result = context.Departments.Find(id);
+            context.Departments.Remove(result);
             context.SaveChanges();
             return RedirectToAction("Index");
         }
 
         public IActionResult GetById(int id)
         {
-            var result = context.Departmen.Find(id);
-            return View("GetById",result);
+            var result = context.Departments.Find(id);
+            return View("GetById", result);
         }
 
-        public IActionResult Update(Departman departman)
+        public IActionResult Update(Department department)
         {
-            var result = context.Departmen.Find(departman.Id);
-            result.DepartmanName = departman.DepartmanName;
+            var result = context.Departments.Find(department.Id);
+            result.DepartmentName = department.DepartmentName;
             context.SaveChanges();
             return RedirectToAction("Index");
         }

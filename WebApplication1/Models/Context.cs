@@ -10,10 +10,10 @@ namespace WebApplication1.Models
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server=LAPTOP-D8VO00IR; database=CoreApp1Db; integrated security=true;");
+            optionsBuilder.UseSqlServer("server=LAPTOP-D8VO00IR; database=CoreMvcApp1Db; integrated security=true;");
         }
 
-        public DbSet<Departman> Departmen { get; set; }
-        public DbSet<Personel> Personels { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Employee> Employees { get; set; }
     }
 }

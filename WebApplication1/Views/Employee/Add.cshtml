@@ -1,0 +1,26 @@
+﻿@model WebApplication1.Models.Employee
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<br />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+
+<form class="form-group" method="post">
+    <b>Personel Adı</b>
+    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+    <br />
+    <b>Personel Soyadı</b>
+    @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+    <br />
+    <b>Personel Şehir</b>
+    @Html.TextBoxFor(x => x.City, new { @class = "form-control" })
+    <br />
+    <b>Personel Departman</b>
+    @Html.DropDownListFor(x=>x.Department.Id, (List<SelectListItem>)ViewBag.result, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-primary" style="color:white">Personel Ekle</button>
+</form>
+

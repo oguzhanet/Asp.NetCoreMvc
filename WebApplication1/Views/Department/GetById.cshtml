@@ -1,19 +1,21 @@
-﻿@model WebApplication1.Models.Departman
+﻿@model WebApplication1.Models.Department
 @{
     ViewData["Title"] = "GetById";
-    Layout = "~/Views/Shared/_LayoutTes1.cshtml";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
 <br />
 <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
-@using (Html.BeginForm("Update", "Departman", FormMethod.Post))
+@using (Html.BeginForm("Update", "Department", FormMethod.Post))
 {
     <b>Departman Id</b>
     @Html.TextBoxFor(x => x.Id, new { @class = "form-control" })
     <br />
     <b>Departman Adı</b>
-    @Html.TextBoxFor(x => x.DepartmanName, new { @class = "form-control" })
+    @Html.TextBoxFor(x => x.DepartmentName, new { @class = "form-control" })
     <br />
     <button class="btn btn-default" style="background-color:#ff6a00; color:white;">Departman Güncelle</button>
 }
+
+

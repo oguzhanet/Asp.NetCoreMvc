@@ -1,0 +1,36 @@
+﻿@using WebApplication1.Models
+@model List<Employee>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Personel Şehri</th>
+        <th>Personel Departman</th>
+        <th>Silme İşlemi</th>
+        <th>Güncelleme İşlemi</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.LastName</td>
+            <td>@item.City</td>
+            <td>@item.Department.DepartmentName</td>
+            <td><a href="/Employee/Delete/@item.Id" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Employee/GetById/@item.Id" class="btn btn-default" style="background-color: darkorange; color: white">Güncelle</a></td>
+        </tr>
+    }
+</table>
+
+<a href="/Employee/Add/" class="btn btn-info">Yeni Personel Ekle</a>
+
