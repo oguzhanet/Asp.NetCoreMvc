@@ -1,7 +1,28 @@
-﻿
+﻿@using WebApplication1.Models
+@model List<Employee>
 @{
     ViewData["Title"] = "Detail";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
-<h1>Detail</h1>
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<br />
+<h3>@ViewBag.result Departmanı</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Personel Adı</th>
+        <th>Personel Soyadı</th>
+        <th>Personel Şehri</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.LastName</td>
+            <td>@item.City</td>
+        </tr>
+    }
+</table>
 

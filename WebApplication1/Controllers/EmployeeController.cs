@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -12,6 +13,8 @@ namespace WebApplication1.Controllers
     public class EmployeeController : Controller
     {
         Context context = new Context();
+
+        [Authorize]
         public IActionResult Index()
         {
             var result = context.Employees.Include(x=>x.Department).ToList();

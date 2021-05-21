@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,8 @@ namespace WebApplication1.Controllers
     public class DepartmentController : Controller
     {
         Context context = new Context();
+
+        [Authorize]
         public IActionResult Index()
         {
             var result = context.Departments.ToList();
@@ -54,8 +58,10 @@ namespace WebApplication1.Controllers
 
         public IActionResult Detail(int id)
         {
-            var result = context.Employees.Where(x => x.DepartmentId == id).ToList();
-            return View(result);
+            var results = context.Employees.Where(x => x.DepartmentId == id).ToList();
+            var result = context.Departments.Where(x => x.Id == id).Select(x => x.DepartmentName).FirstOrDefault();
+            ViewBag.result = result;
+            return View(results);
         }
     }
 }
