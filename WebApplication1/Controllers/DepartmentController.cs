@@ -51,5 +51,11 @@ namespace WebApplication1.Controllers
             context.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public IActionResult Detail(int id)
+        {
+            var result = context.Employees.Where(x => x.DepartmentId == id).ToList();
+            return View(result);
+        }
     }
 }
