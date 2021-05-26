@@ -40,6 +40,7 @@ namespace WebApplication2.CoreAndFood
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
+
             app.UseStaticFiles();
 
             app.UseRouting();

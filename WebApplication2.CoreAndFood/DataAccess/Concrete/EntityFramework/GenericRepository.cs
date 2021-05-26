@@ -53,5 +53,10 @@ namespace WebApplication2.CoreAndFood.DataAccess.Concrete.EntityFramework
             updatedEntity.State = EntityState.Modified;
             c.SaveChanges();
         }
+
+        public List<T> GetAll(string parameter)
+        {
+            return _object.Include(parameter).ToList();
+        }
     }
 }

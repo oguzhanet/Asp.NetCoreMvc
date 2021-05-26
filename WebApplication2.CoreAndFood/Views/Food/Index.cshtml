@@ -1,0 +1,37 @@
+﻿@using WebApplication2.CoreAndFood.Models.Entity
+@model List<Food>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<a href="#" style="margin-bottom:15px;" class="btn btn-primary">Yeni Gıda Ekle</a>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Gıda Adı</th>
+        <th>Kategori Adı</th>
+        <th>Gıda Fiyat</th>
+        <th>Gıda Stok</th>
+        <th>Silme İşlemi</th>
+        <th>Güncelleme İşlemi</th>
+        <th>Detaylar</th>
+
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>@item.FoodId</th>
+            <td>@item.FoodName</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.UnitsInStock</td>
+            <td>@item.Category.CategoryName</td>
+            <td><a href="#" class="btn btn-danger">Sil</a></td>
+            <td><a href="#" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="#" class="btn btn-info">Detay</a></td>
+        </tr>
+    }
+</table>
+
+
