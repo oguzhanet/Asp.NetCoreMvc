@@ -1,0 +1,22 @@
+﻿@model WebApplication2.CoreAndFood.Models.Entity.Category
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h3 style="margin-bottom:15px;">Kategori Güncelleme Sayfası</h3>
+
+@using (Html.BeginForm("GetById", "Category", FormMethod.Post))
+{
+    <b><label>Kategori Id</label></b>
+    @Html.TextBoxFor(x => x.CategoryId, new { @class = "form-control" })
+    <br />
+    <b><label>Kategori Adı</label></b>
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.CategoryName, "", new { @style = "color:red" })
+    <br />
+    <b><label>Kategori Açıklaması</label></b>
+    @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-default" style="background-color:#ff6a00; color:white;">Güncelle</button>
+}

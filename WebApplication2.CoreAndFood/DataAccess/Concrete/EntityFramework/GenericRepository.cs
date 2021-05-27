@@ -37,6 +37,11 @@ namespace WebApplication2.CoreAndFood.DataAccess.Concrete.EntityFramework
             return _object.SingleOrDefault(filter);
         }
 
+        public T Get(int id)
+        {
+            return _object.Find(id);
+        }
+
         public List<T> GetAll(Expression<Func<T, bool>> filter)
         {
             return _object.Where(filter).ToList();

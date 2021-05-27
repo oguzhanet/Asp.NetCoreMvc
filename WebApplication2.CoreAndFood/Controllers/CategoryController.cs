@@ -35,5 +35,21 @@ namespace WebApplication2.CoreAndFood.Controllers
             categoryDal.Add(category);
             return RedirectToAction("Index");
         }
+
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            var result = categoryDal.Get(id);
+            return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult GetById(Category category)
+        {
+            category.Status = true;
+            categoryDal.Update(category);
+            return RedirectToAction("Index");
+        }
+
     }
 }

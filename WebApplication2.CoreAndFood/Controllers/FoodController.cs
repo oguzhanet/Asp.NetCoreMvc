@@ -39,5 +39,12 @@ namespace WebApplication2.CoreAndFood.Controllers
             foodDal.Add(food);
             return RedirectToAction("Index");
         }
+
+        public IActionResult Delete(int id)
+        {
+            var result = foodDal.Get(x=>x.FoodId==id);
+            foodDal.Delete(result);
+            return RedirectToAction("Index");
+        }
     }
 }
