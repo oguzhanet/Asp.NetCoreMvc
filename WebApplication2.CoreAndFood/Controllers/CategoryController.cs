@@ -6,15 +6,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.CoreAndFood.DataAccess.Abstract;
 using WebApplication2.CoreAndFood.DataAccess.Concrete.EntityFramework;
+using WebApplication2.CoreAndFood.Models.Entity;
 
 namespace WebApplication2.CoreAndFood.Controllers
 {
     public class CategoryController : Controller
     {
+        EFCategoryDal categoryDal = new EFCategoryDal();
         public IActionResult Index()
         {
-            EFCategoryDal categoryDal = new EFCategoryDal();
-            return View(categoryDal.GetAll());
+            var result = categoryDal.GetAll();
+            return View(result);
+        }
+
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Add(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Add");
+            }
+            categoryDal.Add(category);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,0 +1,19 @@
+﻿@model WebApplication2.CoreAndFood.Models.Entity.Category
+@{
+    ViewData["Title"] = "Add";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h3 style="margin-bottom:15px;">Kategori Ekleme Sayfası</h3>
+
+@using (Html.BeginForm("Add", "Category", FormMethod.Post))
+{
+    <b><label>Kategori Adı</label></b>
+    @Html.TextBoxFor(x => x.CategoryName, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x=>x.CategoryName,"",new {@style="color:red" })
+    <br />
+    <b><label>Kategori Açıklaması</label></b>
+    @Html.TextBoxFor(x => x.CategoryDescription, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-info">Kategori Ekle</button>
+}
