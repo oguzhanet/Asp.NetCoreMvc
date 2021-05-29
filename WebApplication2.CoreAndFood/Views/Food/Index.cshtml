@@ -1,5 +1,9 @@
 ﻿@using WebApplication2.CoreAndFood.Models.Entity
-@model List<Food>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core
+
+@model IPagedList<Food>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -28,10 +32,10 @@
             <td>@item.UnitsInStock</td>
             <td>@item.Category.CategoryName</td>
             <td><a href="/Food/Delete/@item.FoodId" class="btn btn-danger">Sil</a></td>
-            <td><a href="#" class="btn btn-warning">Güncelle</a></td>
+            <td><a href="/Food/GetById/@item.FoodId" class="btn btn-warning">Güncelle</a></td>
             <td><a href="#" class="btn btn-info">Detay</a></td>
         </tr>
     }
 </table>
 
-
+    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))

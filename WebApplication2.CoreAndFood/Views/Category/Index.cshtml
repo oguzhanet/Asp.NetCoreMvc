@@ -23,7 +23,7 @@
             <td>@item.CategoryName</td>
             <td>@item.CategoryDescription</td>
             <td>@item.Status</td>
-            <td><a href="#" class="btn btn-danger">Sil</a></td>
+            <td><a href="/Category/Delete/@item.CategoryId" class="btn btn-danger">Sil</a></td>
             <td><a href="/Category/GetById/@item.CategoryId" class="btn btn-warning">Güncelle</a></td>
         </tr>
     }

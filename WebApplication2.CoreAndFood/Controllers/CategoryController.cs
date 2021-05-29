@@ -51,5 +51,12 @@ namespace WebApplication2.CoreAndFood.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Delete(int id)
+        {
+            var result = categoryDal.Get(id);
+            result.Status = false;
+            categoryDal.Update(result);
+            return RedirectToAction("Index");
+        }
     }
 }

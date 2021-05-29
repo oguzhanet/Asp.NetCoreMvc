@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.CoreAndFood.DataAccess.Concrete.EntityFramework;
 using WebApplication2.CoreAndFood.Models.Entity;
+using X.PagedList;
 
 namespace WebApplication2.CoreAndFood.Controllers
 {
@@ -13,9 +14,9 @@ namespace WebApplication2.CoreAndFood.Controllers
     {
         Context context = new Context();
         EfFoodDal foodDal = new EfFoodDal();
-        public IActionResult Index()
+        public IActionResult Index(int page=1)
         {
-            var result = foodDal.GetAll("Category");
+            var result = foodDal.GetAll("Category").ToPagedList(page,3);
             return View(result);
         }
 
@@ -44,6 +45,29 @@ namespace WebApplication2.CoreAndFood.Controllers
         {
             var result = foodDal.Get(x=>x.FoodId==id);
             foodDal.Delete(result);
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public IActionResult GetById(int id)
+        {
+            List<SelectListItem> categories = (from category in context.Categories.ToList()
+                                               select new SelectListItem
+                                               {
+                                                   Text = category.CategoryName,
+                                                   Value = category.CategoryId.ToString()
+                                               }).ToList();
+            ViewBag.category = categories;
+
+            var result = foodDal.Get(id);
+            return View(result);
+        }
+
+        [HttpPost]
+        public IActionResult GetById(Food food)
+        {
+            //food.Status = true;
+            foodDal.Update(food);
             return RedirectToAction("Index");
         }
     }

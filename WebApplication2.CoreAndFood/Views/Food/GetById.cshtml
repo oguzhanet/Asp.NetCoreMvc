@@ -1,0 +1,35 @@
+﻿@model WebApplication2.CoreAndFood.Models.Entity.Food
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h3 style="margin-bottom:15px;">Kategori Güncelleme Sayfası</h3>
+
+@using (Html.BeginForm("GetById", "Food", FormMethod.Post))
+{
+    <b><label>Gıda Id</label></b>
+    @Html.TextBoxFor(x => x.FoodId, new { @class = "form-control" })
+    <br />
+    <b><label>Gıda Adı</label></b>
+    @Html.TextBoxFor(x => x.FoodName, new { @class = "form-control" })
+    @*@Html.ValidationMessageFor(x => x.FoodName, "", new { @style = "color:red" })*@
+    <br />
+    <b><label>Kategori Adı</label></b>
+    @Html.DropDownListFor(x=>x.CategoryId,(List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+    <br />
+    <b><label>Gıda Açıklaması</label></b>
+    @Html.TextBoxFor(x => x.Description, new { @class = "form-control" })
+    <br />
+    <b><label>Gıda Resmi Url</label></b>
+    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    <br />
+    <b><label>Gıda Stok</label></b>
+    @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control" })
+    <br />
+    <b><label>Gıda fiyatı</label></b>
+    @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-default" style="background-color:#ff6a00; color:white;">Güncelle</button>
+}
+<br /><br />
