@@ -1,6 +1,7 @@
 ﻿@using WebApplication2.CoreAndFood.Models.Entity
 @using X.PagedList;
 @using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
 
 @model IPagedList<Food>
 
@@ -38,4 +39,20 @@
     }
 </table>
 
-    @Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))
+@*@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))*@
+
+<div class="pull-right">
+@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index",
+   new
+        {
+            page
+
+ }),
+ new PagedListRenderOptionsBase
+ {
+     LiElementClasses = new string[] { "page-item" },
+     PageClasses = new string[] { "page-link" },
+     Display = PagedListDisplayMode.IfNeeded
+
+      })
+            </div>

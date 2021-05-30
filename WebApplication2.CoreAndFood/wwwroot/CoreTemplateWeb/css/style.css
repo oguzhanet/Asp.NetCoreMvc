@@ -1558,7 +1558,7 @@ button#focus-single,button#focus-multiple,button#focus-coords,button#focus-init 
 		font-size: 1.4em;
 	}
 	.visitors h3, .sales h3, .users h3 {
-		font-size: 2.75em;
+		font-size: 1.75em;
 	}
 	.visitors p, .sales p, .new-users p, .orders p {
 		font-size: 1.05em;
