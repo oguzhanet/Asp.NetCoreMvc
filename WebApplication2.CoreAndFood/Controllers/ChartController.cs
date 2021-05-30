@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.CoreAndFood.Models;
+using WebApplication2.CoreAndFood.Models.Entity;
 
 namespace WebApplication2.CoreAndFood.Controllers
 {
@@ -42,6 +43,30 @@ namespace WebApplication2.CoreAndFood.Controllers
                 ProductName = "Flash Disk",
                 Stock = 120
             });
+            return parameters;
+        }
+
+        public IActionResult Index3()
+        {
+            return View();
+        }
+
+        public IActionResult VisualizeProductResult2()
+        {
+            return Json(FoodList());
+        }
+
+        public List<ParameterTwo> FoodList()
+        {
+            List<ParameterTwo> parameters = new List<ParameterTwo>();
+            using (var context=new Context())
+            {
+                parameters = context.Foods.Select(x => new ParameterTwo
+                {
+                    FoodName=x.FoodName,
+                    Stock=x.UnitsInStock
+                }).ToList();
+            }
             return parameters;
         }
     }
