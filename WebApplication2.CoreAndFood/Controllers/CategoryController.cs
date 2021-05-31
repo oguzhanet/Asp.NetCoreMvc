@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace WebApplication2.CoreAndFood.Controllers
     public class CategoryController : Controller
     {
         EFCategoryDal categoryDal = new EFCategoryDal();
+
+        //[AllowAnonymous]
         public IActionResult Index()
         {
             var result = categoryDal.GetAll();
