@@ -14,6 +14,7 @@ namespace WebApplication2.CoreAndFood.Controllers
     {
         Context context = new Context();
         EfFoodDal foodDal = new EfFoodDal();
+
         public IActionResult Index(int page=1)
         {
             var result = foodDal.GetAll("Category").ToPagedList(page,3);
