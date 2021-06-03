@@ -5,6 +5,14 @@
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
 
+@using (Html.BeginForm())
+{
+    <p>
+        Gıda Adı: @Html.TextBox("parameter")
+        <input type="submit" class="btn btn-dark" value="Ara" />
+    </p>
+}
+
 <a href="/Category/Add/" style="margin-bottom:15px;" class="btn btn-primary">Yeni Kategori Ekle</a>
 
 <table class="table table-bordered">

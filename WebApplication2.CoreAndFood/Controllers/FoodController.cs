@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using WebApplication2.CoreAndFood.DataAccess.Concrete.EntityFramework;
@@ -36,8 +37,23 @@ namespace WebApplication2.CoreAndFood.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Food food)
+        public IActionResult Add(AddFile file)
         {
+            Food food = new Food();
+            if (file.ImageUrl !=null)
+            {
+                var extension = Path.GetExtension(file.ImageUrl.FileName);
+                var newImageName = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(),"wwwroot/Images/",newImageName);
+                var stream = new FileStream(location, FileMode.Create);
+                file.ImageUrl.CopyTo(stream);
+                food.ImageUrl = newImageName;
+            }
+            food.FoodName = file.FoodName;
+            food.UnitPrice = file.UnitPrice;
+            food.UnitsInStock = file.UnitsInStock;
+            food.Description = file.Description;
+            food.CategoryId = file.CategoryId;
             foodDal.Add(food);
             return RedirectToAction("Index");
         }

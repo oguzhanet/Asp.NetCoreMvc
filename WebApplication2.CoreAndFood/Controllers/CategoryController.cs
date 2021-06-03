@@ -16,8 +16,13 @@ namespace WebApplication2.CoreAndFood.Controllers
         EFCategoryDal categoryDal = new EFCategoryDal();
 
         //[AllowAnonymous]
-        public IActionResult Index()
+        public IActionResult Index(string parameter)
         {
+            if (!string.IsNullOrEmpty(parameter))
+            {
+                return View(categoryDal.GetAll(x => x.CategoryName == parameter));
+            }
+
             var result = categoryDal.GetAll();
             return View(result);
         }

@@ -1,4 +1,4 @@
-﻿@model WebApplication2.CoreAndFood.Models.Entity.Food
+﻿@model WebApplication2.CoreAndFood.Models.Entity.AddFile
 @{
     ViewData["Title"] = "Add";
     Layout = "~/Views/Shared/_Layout1.cshtml";
@@ -6,28 +6,27 @@
 
 <h3 style="margin-bottom:15px; margin-top:5px;">Gıda Ekleme Sayfası</h3>
 
-@using (Html.BeginForm("Add", "Food", FormMethod.Post))
-{
+<form class="form-group" action="Add" controller="Fodd" method="post" enctype="multipart/form-data">
     <b><label>Gıda Adı</label></b>
     @Html.TextBoxFor(x => x.FoodName, new { @class = "form-control" })
     <br />
     <b><label>Kategori Adı</label></b>
-    @Html.DropDownListFor(x=>x.CategoryId, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+    @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
     <br />
     <b><label>Gıda Fiyat</label></b>
     @Html.TextBoxFor(x => x.UnitPrice, new { @class = "form-control" })
     <br />
     <b><label>Gıda Stok</label></b>
     @Html.TextBoxFor(x => x.UnitsInStock, new { @class = "form-control" })
-    <br />
-    <b><label>Resim Url</label></b>
-    @Html.TextBoxFor(x => x.ImageUrl, new { @class = "form-control" })
+    
+    <b><label>Resim Dosyası:  </label></b>
+    <input type="file" class="form-control, btn btn-dark" style="margin-top:23px;margin-bottom:15px" name="ImageUrl" />
     <br />
     <b><label>Gıda Açıklaması</label></b>
     @Html.TextAreaFor(x => x.Description, new { @class = "form-control" })
     <br />
 
     <button class="btn btn-info">Gıda Ekle</button>
-}
+</form>
 
 

@@ -18,8 +18,9 @@ namespace WebApplication2.CoreAndFood.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult CategoryDetails()
+        public IActionResult CategoryDetails(int id)
         {
+            ViewBag.id = id;
             return View();
         }
     }
